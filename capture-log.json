@@ -1,0 +1,111 @@
+[
+  {
+    "step": "step-01-homepage",
+    "platform": "web",
+    "status": "captured",
+    "timestamp": "2026-04-14T19:03:51.831Z"
+  },
+  {
+    "step": "step-02-search",
+    "platform": "web",
+    "status": "fallback",
+    "reason": "blocked/empty",
+    "timestamp": "2026-04-14T19:04:43.500Z"
+  },
+  {
+    "step": "step-04-brands",
+    "platform": "web",
+    "status": "captured",
+    "timestamp": "2026-04-14T19:06:48.772Z"
+  },
+  {
+    "step": "step-05-product",
+    "platform": "web",
+    "status": "captured",
+    "timestamp": "2026-04-14T19:07:46.350Z"
+  },
+  {
+    "step": "step-04-brands",
+    "platform": "mobile",
+    "status": "captured",
+    "timestamp": "2026-04-14T19:15:29.879Z"
+  },
+  {
+    "step": "step-05-product",
+    "platform": "mobile",
+    "status": "captured",
+    "timestamp": "2026-04-14T19:16:19.715Z"
+  },
+  {
+    "step": "step-08-checkout",
+    "platform": "mobile",
+    "status": "captured",
+    "timestamp": "2026-04-14T19:18:39.554Z"
+  },
+  {
+    "step": "step-03-results",
+    "platform": "web",
+    "status": "captured",
+    "timestamp": "2026-04-14T19:24:34.445Z"
+  },
+  {
+    "step": "step-06-add-to-cart",
+    "platform": "web",
+    "status": "captured",
+    "timestamp": "2026-04-14T19:24:49.767Z"
+  },
+  {
+    "step": "step-07-cart",
+    "platform": "web",
+    "status": "captured",
+    "timestamp": "2026-04-14T19:25:04.273Z"
+  },
+  {
+    "step": "step-09-confirmation",
+    "platform": "web",
+    "status": "captured",
+    "timestamp": "2026-04-14T19:25:19.249Z"
+  },
+  {
+    "step": "step-02-search",
+    "platform": "mobile",
+    "status": "captured",
+    "timestamp": "2026-04-14T19:27:28.372Z"
+  },
+  {
+    "step": "step-03-results",
+    "platform": "mobile",
+    "status": "captured",
+    "timestamp": "2026-04-14T19:27:54.217Z"
+  },
+  {
+    "step": "step-06-add-to-cart",
+    "platform": "mobile",
+    "status": "captured",
+    "timestamp": "2026-04-14T19:28:13.033Z"
+  },
+  {
+    "step": "step-07-cart",
+    "platform": "mobile",
+    "status": "captured",
+    "timestamp": "2026-04-14T19:28:27.358Z"
+  },
+  {
+    "step": "step-09-confirmation",
+    "platform": "mobile",
+    "status": "captured",
+    "timestamp": "2026-04-14T19:28:36.737Z"
+  },
+  {
+    "step": "step-08-checkout",
+    "platform": "web",
+    "status": "captured",
+    "timestamp": "2026-04-14T19:30:09.378Z"
+  },
+  {
+    "step": "step-01-homepage",
+    "platform": "mobile",
+    "status": "captured",
+    "timestamp": "2026-04-14T19:30:31.975Z"
+  }
+]
