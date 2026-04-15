@@ -11,6 +11,10 @@ const AUDIT_DATA = {
 
   executiveSummary: {
     paragraph: "Noon SA's iPhone 17 purchase journey suffers from three compounding problems: a cognitively overloaded search-and-results experience that delays decision-making, inconsistent visual hierarchy between Web and Mobile that erodes trust on the product page, and a checkout flow that forces account creation before price transparency. Mobile is measurably weaker than Web on tap-target sizing and legibility on the PDP and cart. The single highest-leverage opportunity is to expose pricing, delivery dates, and the 'proceed as guest' option before the login wall on step 8 — this alone is expected to materially lift conversion for first-time iPhone buyers.",
+    leadQuote: "Expose pricing, delivery dates, and a 'proceed as guest' option before the login wall — this alone is expected to materially lift conversion for first-time iPhone buyers.",
+    leadQuoteAr: "أظهر السعر وتاريخ التوصيل وخيار 'المتابعة كضيف' قبل جدار تسجيل الدخول — هذا وحده كفيل برفع معدل التحويل لمشتري آيفون لأول مرة.",
+    heroLead: "A management-level audit of the iPhone 17 flow across Web and Mobile, anchored to Nielsen's 10 heuristics and WCAG 2.1 AA — designed to surface what lifts conversion.",
+    heroLeadAr: "تدقيق بمستوى الإدارة لرحلة آيفون 17 على الويب والموبايل، مرتكز إلى إرشادات نيلسن العشر و WCAG 2.1 AA — مصمم لاستخراج ما يرفع معدل التحويل.",
     topRisks: [
       { title: "Forced login before price transparency", description: "Checkout hides final price, delivery date, and fees behind a mandatory login wall, violating user control and creating last-mile drop-off.", severity: "High" },
       { title: "Weak primary-CTA hierarchy on PDP", description: "'Add to Cart' and 'Buy Now' compete visually with identical weight; users hesitate, reducing decision speed on a high-AOV device.", severity: "High" },
@@ -83,7 +87,13 @@ const AUDIT_DATA = {
       kpiSteps: "Steps audited", kpiCaptured: "Screens captured",
       scoreNeedsImprovement: "Needs Improvement", scoreGood: "Good",
       coverScoreSub: "Driven by checkout friction & a11y gaps",
-      coverTopAction: "Top Action"
+      coverTopAction: "Top Action",
+      heroEyebrow: "UX Audit · Saudi Arabia · April 2026",
+      heroTitleL1: "noon Saudi Arabia —", heroTitleL2: "iPhone 17",
+      heroSubtitle: "Search-to-Checkout Journey · Web + Mobile",
+      heroScroll: "Scroll to explore",
+      pullQuoteAttribution: "Audit · Highest-leverage opportunity",
+      chapter: "Chapter"
     },
     ar: {
       appName: "تدفق التدقيق",
@@ -121,7 +131,13 @@ const AUDIT_DATA = {
       kpiSteps: "خطوات مدققة", kpiCaptured: "شاشات ملتقطة",
       scoreNeedsImprovement: "يحتاج تحسين", scoreGood: "جيد",
       coverScoreSub: "بسبب احتكاك الدفع وفجوات إمكانية الوصول",
-      coverTopAction: "أهم إجراء"
+      coverTopAction: "أهم إجراء",
+      heroEyebrow: "تدقيق تجربة المستخدم · السعودية · أبريل 2026",
+      heroTitleL1: "نون السعودية —", heroTitleL2: "آيفون 17",
+      heroSubtitle: "رحلة من البحث إلى الدفع · ويب + موبايل",
+      heroScroll: "مرر للاستكشاف",
+      pullQuoteAttribution: "التدقيق · الفرصة الأعلى أثراً",
+      chapter: "الفصل"
     }
   }
 };
