@@ -93,7 +93,16 @@ const AUDIT_DATA = {
       heroSubtitle: "Search-to-Checkout Journey · Web + Mobile",
       heroScroll: "Scroll to explore",
       pullQuoteAttribution: "Audit · Highest-leverage opportunity",
-      chapter: "Chapter"
+      chapter: "Chapter",
+      filterAll: "All", filterBoth: "Web + Mobile",
+      wvmChartTitle: "Issue density by step · Web vs Mobile",
+      finaleTitle: "Ship it with confidence",
+      finaleLead: "55 findings. 9 steps. One clear path to material conversion lift — starting with a visible guest-checkout at step 8. The brief is ready. The work is scoped. Your board has what it needs.",
+      finaleCta: "View the Summary",
+      helpTitle: "Keyboard shortcuts",
+      helpJourney: "Journey tab", helpInsights: "Insights tab", helpA11y: "Accessibility tab", helpSummary: "Summary tab",
+      helpDark: "Toggle dark mode", helpLang: "Toggle language", helpTop: "Back to top",
+      helpHelp: "Show this help", helpClose: "Close overlays", helpGotIt: "Got it"
     },
     ar: {
       appName: "تدفق التدقيق",
@@ -137,7 +146,16 @@ const AUDIT_DATA = {
       heroSubtitle: "رحلة من البحث إلى الدفع · ويب + موبايل",
       heroScroll: "مرر للاستكشاف",
       pullQuoteAttribution: "التدقيق · الفرصة الأعلى أثراً",
-      chapter: "الفصل"
+      chapter: "الفصل",
+      filterAll: "الكل", filterBoth: "ويب + موبايل",
+      wvmChartTitle: "كثافة المشكلات لكل خطوة · ويب مقابل موبايل",
+      finaleTitle: "اطلقه بثقة",
+      finaleLead: "55 نتيجة. 9 خطوات. مسار واحد واضح لرفع معدل التحويل — يبدأ من إظهار الدفع كضيف في الخطوة 8. الملخص جاهز، والعمل محدد، ومجلسك لديه ما يحتاجه.",
+      finaleCta: "عرض الملخص",
+      helpTitle: "اختصارات لوحة المفاتيح",
+      helpJourney: "تبويب الرحلة", helpInsights: "تبويب الرؤى", helpA11y: "تبويب إمكانية الوصول", helpSummary: "تبويب الملخص",
+      helpDark: "التبديل إلى الوضع الداكن", helpLang: "تبديل اللغة", helpTop: "إلى الأعلى",
+      helpHelp: "عرض المساعدة", helpClose: "إغلاق النوافذ", helpGotIt: "فهمت"
     }
   }
 };

@@ -148,9 +148,77 @@ img{max-width:100%;display:block}
   margin-top:var(--topnav-height);margin-left:var(--sidebar-width);
   padding:var(--sp-10) var(--sp-12) 120px;min-height:calc(100vh - var(--topnav-height));
 }
-@media (max-width:780px){
+/* Full mobile responsive */
+.mobile-menu-btn{display:none;background:transparent;border:1px solid var(--color-border);border-radius:8px;padding:0;width:36px;height:36px;align-items:center;justify-content:center;cursor:pointer;transition:background var(--transition)}
+.mobile-menu-btn:hover{background:var(--color-surface)}
+.mobile-menu-btn .bar{display:block;width:16px;height:2px;background:var(--color-text);margin:2px auto;transition:transform var(--transition),opacity var(--transition)}
+.mobile-menu-btn.open .bar:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.mobile-menu-btn.open .bar:nth-child(2){opacity:0}
+.mobile-menu-btn.open .bar:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+#sidebar-backdrop{position:fixed;inset:0;background:rgba(11,17,21,.5);backdrop-filter:blur(4px);z-index:499;opacity:0;pointer-events:none;transition:opacity var(--transition);display:none}
+#sidebar-backdrop.open{opacity:1;pointer-events:auto}
+
+@media (max-width:900px){
+  :root{--sidebar-width:0px}
+  .mobile-menu-btn{display:flex}
+  #sidebar-backdrop{display:block}
+  #sidebar{transform:translateX(-100%);transition:transform 300ms var(--ease-elegant);width:280px;background:var(--color-bg);box-shadow:var(--shadow-lg);z-index:600}
+  #sidebar.open{transform:translateX(0)}
+  [data-lang="ar"] #sidebar{transform:translateX(100%)}
+  [data-lang="ar"] #sidebar.open{transform:translateX(0)}
   #main-content{margin-left:0;padding:var(--sp-6) var(--sp-5) var(--sp-12)}
-  #sidebar{transform:translateX(-100%)}
+  [data-lang="ar"] #main-content{margin-right:0}
+  #topnav{padding:0 var(--sp-4);gap:var(--sp-3)}
+  .brand-name{font-size:14px}
+  .brand-badge{display:none}
+  .tabs{overflow-x:auto;scrollbar-width:none;flex:1 1 auto;justify-content:flex-start;-webkit-overflow-scrolling:touch}
+  .tabs::-webkit-scrollbar{display:none}
+  .tab-btn{padding:0 12px;font-size:12.5px;flex:0 0 auto}
+  .nav-btn{padding:0 10px;font-size:11.5px}
+  .nav-btn#export-pdf{display:none}
+  #journey-hero{padding:var(--sp-8) var(--sp-5);border-radius:14px}
+  .hero-main{grid-template-columns:1fr;gap:var(--sp-6)}
+  .hero-counters{grid-template-columns:1fr 1fr;gap:var(--sp-3)}
+  .hero-counter-num{font-size:34px}
+  .hero-title{font-size:clamp(28px,8vw,44px)}
+  .hero-lead{font-size:15px;padding-left:var(--sp-3)}
+  .hero-donut{width:180px;height:180px}
+  .section-title{font-size:22px}
+  .exec-row{grid-template-columns:1fr;gap:var(--sp-3)}
+  .step-section{padding:var(--sp-5)}
+  .step-body{grid-template-columns:1fr!important;gap:var(--sp-5)}
+  .screenshot-panel{position:static;max-height:none}
+  .screenshot-wrapper{max-height:70vh;overflow-y:auto}
+  .card{padding:var(--sp-4) var(--sp-5)}
+  .card-row{grid-template-columns:1fr;gap:4px}
+  .summary-sub .chapter{display:none}
+  .slide{flex:0 0 280px;height:auto;min-height:400px}
+  .slide-filters{gap:8px}
+  .slide-filter-group{width:100%;justify-content:space-between;overflow-x:auto}
+  .metrics-bar{grid-template-columns:1fr 1fr}
+  .metric-box{padding:var(--sp-4)}
+  .table-wrap{font-size:12px}
+  th,td{padding:var(--sp-3) var(--sp-4)}
+  .wvm-row{grid-template-columns:90px 1fr 1fr;gap:var(--sp-2);font-size:11.5px}
+  #journey-timeline{margin-left:calc(var(--sp-5)*-1);margin-right:calc(var(--sp-5)*-1);padding:10px var(--sp-4)}
+  .intro-counters{gap:24px}
+  .intro-counter .n{font-size:36px}
+}
+@media (max-width:560px){
+  .hero-counters{grid-template-columns:1fr 1fr}
+  .hero-lead{font-size:14px;line-height:1.55}
+  .step-header{gap:var(--sp-2)}
+  .step-counter{font-size:9.5px}
+  .platform-toggle{margin-left:auto;margin-top:var(--sp-2)}
+  [data-lang="ar"] .platform-toggle{margin-left:0;margin-right:auto}
+  .metric-num{font-size:22px}
+  .annotation-dot{width:26px;height:26px;font-size:11px;border-width:2px}
+  .pull-quote{padding:var(--sp-5) var(--sp-6)}
+  .pull-quote-text{font-size:17px}
+  .pull-quote::before{font-size:60px;top:-12px;left:16px}
+  .section-title{font-size:19px}
+  .section{margin-bottom:var(--sp-10)}
+  #main-content{padding:var(--sp-4) var(--sp-4) var(--sp-10)}
 }
 .tab-panel{display:none}
 .tab-panel.active{display:block;animation:fadeIn .3s ease}
@@ -320,6 +388,43 @@ td strong{color:var(--color-text);font-weight:600}
 #modal .close{position:absolute;top:16px;right:20px;background:rgba(255,255,255,.1);color:#fff;border-radius:50%;width:36px;height:36px;font-size:16px;display:flex;align-items:center;justify-content:center;transition:background var(--transition)}
 #modal .close:hover{background:rgba(255,255,255,.2)}
 
+/* ============ Cinematic intro curtain ============ */
+#intro-curtain{position:fixed;inset:0;z-index:9999;background:
+  radial-gradient(ellipse 900px 600px at 60% 40%, rgba(254,238,0,.08) 0%, transparent 60%),
+  radial-gradient(ellipse 500px 400px at 30% 70%, rgba(254,238,0,.04) 0%, transparent 70%),
+  linear-gradient(160deg, #0B1A3A 0%, #04091C 100%);
+  display:flex;align-items:center;justify-content:center;
+  transition:opacity 800ms var(--ease-elegant),transform 900ms var(--ease-elegant);
+  padding:40px;overflow:hidden;}
+#intro-curtain.gone{opacity:0;transform:translateY(-20px);pointer-events:none;visibility:hidden}
+#intro-curtain .intro-wrap{max-width:900px;width:100%;text-align:center;color:#F5F5F7;position:relative;z-index:1}
+.intro-eyebrow{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:3px;color:rgba(255,255,255,.5);margin-bottom:24px;opacity:0;transform:translateY(10px);transition:opacity .6s var(--ease-elegant) .15s,transform .6s var(--ease-elegant) .15s}
+.intro-title{font-size:clamp(36px,6vw,72px);font-weight:700;line-height:1.05;letter-spacing:-.03em;margin:0 0 16px;color:#fff}
+.intro-title .line{display:block;overflow:hidden}
+.intro-title .word{display:inline-block;transform:translateY(105%);opacity:0;transition:transform .9s var(--ease-elegant),opacity .9s var(--ease-elegant)}
+.intro-title .accent{color:var(--color-accent)}
+.intro-sub{font-size:clamp(14px,1.4vw,17px);color:rgba(255,255,255,.6);margin-bottom:48px;font-family:var(--font-serif);font-style:italic;letter-spacing:-.005em;opacity:0;transform:translateY(12px);transition:opacity .7s var(--ease-elegant) .85s,transform .7s var(--ease-elegant) .85s}
+.intro-heatmap{display:flex;gap:6px;max-width:560px;margin:0 auto 36px}
+.intro-heatmap .seg{flex:1;height:10px;border-radius:4px;background:rgba(255,255,255,.06);transform:scaleY(0) translateY(20px);transform-origin:bottom;transition:transform .7s var(--ease-elegant),background .5s var(--ease-elegant)}
+.intro-heatmap .seg.fallen{transform:scaleY(1) translateY(0)}
+.intro-heatmap .seg[data-sev="high"].fallen{background:linear-gradient(180deg,#EF4444,#B91C1C)}
+.intro-heatmap .seg[data-sev="medium"].fallen{background:linear-gradient(180deg,#F59E0B,#B45309)}
+.intro-heatmap .seg[data-sev="low"].fallen{background:linear-gradient(180deg,#22C55E,#15803D)}
+.intro-counters{display:flex;justify-content:center;gap:48px;margin-bottom:48px;flex-wrap:wrap}
+.intro-counter{opacity:0;transform:translateY(12px);transition:opacity .6s var(--ease-elegant),transform .6s var(--ease-elegant)}
+.intro-counter .n{font-size:48px;font-weight:700;color:#fff;line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums;display:block;margin-bottom:6px}
+.intro-counter .n.accent{color:var(--color-accent)}
+.intro-counter .l{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:1.8px;color:rgba(255,255,255,.5)}
+.intro-skip{position:absolute;top:24px;right:24px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.7);padding:8px 16px;border-radius:999px;font-size:11px;font-weight:500;letter-spacing:.5px;cursor:pointer;transition:background var(--transition),color var(--transition);z-index:10}
+.intro-skip:hover{background:rgba(255,255,255,.12);color:#fff}
+#intro-curtain.playing .intro-eyebrow,
+#intro-curtain.playing .intro-title .word,
+#intro-curtain.playing .intro-sub,
+#intro-curtain.playing .intro-counter{opacity:1;transform:translateY(0)}
+
+/* ============ Scroll progress bar ============ */
+#scroll-progress{position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,var(--color-accent) 0%,#FFD700 100%);z-index:1100;transition:width 80ms linear;box-shadow:0 0 12px rgba(254,238,0,.5)}
+
 /* ============ Editorial: Scroll reveal ============ */
 .reveal{opacity:0;transform:translateY(var(--reveal-y));transition:opacity 700ms var(--ease-elegant),transform 700ms var(--ease-elegant)}
 .reveal.is-visible{opacity:1;transform:none}
@@ -381,6 +486,123 @@ td strong{color:var(--color-text);font-weight:600}
 .pull-quote-text{font-family:var(--font-serif);font-size:22px;line-height:1.5;color:var(--color-text);margin:0;font-style:italic;font-weight:400;letter-spacing:-.008em}
 .pull-quote-author{margin-top:var(--sp-3);font-size:11px;color:var(--color-text-muted);text-transform:uppercase;letter-spacing:1.5px;font-weight:500;font-style:normal;display:inline-flex;align-items:center;gap:8px}
 .pull-quote-author::before{content:"";width:16px;height:1px;background:currentColor}
+
+/* ============ Hero additions: donut, parallax, magnetic ============ */
+.hero-main{display:grid;grid-template-columns:1fr 280px;gap:var(--sp-10);align-items:start}
+@media (max-width:980px){.hero-main{grid-template-columns:1fr}}
+.hero-left{min-width:0}
+.hero-viz{position:relative}
+.hero-donut{position:relative;width:240px;height:240px;margin:0 auto var(--sp-4)}
+.hero-donut svg{width:100%;height:100%;transform:rotate(-90deg)}
+.hero-donut .arc{fill:none;stroke-width:22;stroke-linecap:round;transition:stroke-dashoffset 1200ms var(--ease-out-quart)}
+.hero-donut .arc.bg{stroke:rgba(255,255,255,.06)}
+.hero-donut-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;pointer-events:none}
+.hero-donut-center .num{font-size:44px;font-weight:700;letter-spacing:-.03em;line-height:1}
+.hero-donut-center .lbl{font-size:10px;text-transform:uppercase;letter-spacing:1.8px;color:rgba(255,255,255,.55);margin-top:6px}
+.hero-donut-legend{display:flex;flex-direction:column;gap:8px;font-size:12px;color:rgba(255,255,255,.75)}
+.hero-donut-legend .row{display:flex;align-items:center;gap:10px;padding:6px 10px;border-radius:8px;transition:background var(--transition)}
+.hero-donut-legend .row:hover{background:rgba(255,255,255,.04)}
+.hero-donut-legend .sw{width:10px;height:10px;border-radius:3px}
+.hero-donut-legend .row .n{margin-left:auto;font-variant-numeric:tabular-nums;font-weight:600;color:#fff}
+[data-lang="ar"] .hero-donut-legend .row .n{margin-left:0;margin-right:auto}
+
+/* Cursor parallax layer in hero */
+#journey-hero .parallax-light{position:absolute;width:480px;height:480px;top:-120px;right:-120px;background:radial-gradient(circle,rgba(254,238,0,.12) 0%,transparent 70%);pointer-events:none;transition:transform 300ms var(--ease-elegant);z-index:0;will-change:transform}
+
+/* Magnetic hover CTA */
+.magnetic{transition:transform 250ms var(--ease-elegant)}
+
+/* Hero CTA button */
+.hero-cta{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;background:var(--color-accent);color:#0F1115;border:1px solid var(--color-accent);border-radius:999px;font-size:13px;font-weight:600;cursor:pointer;margin-top:var(--sp-5);transition:transform 250ms var(--ease-elegant),box-shadow var(--transition);letter-spacing:.3px;text-transform:uppercase;box-shadow:0 6px 20px rgba(254,238,0,.25)}
+.hero-cta:hover{box-shadow:0 10px 30px rgba(254,238,0,.4)}
+.hero-cta .arrow{display:inline-block;transition:transform var(--transition)}
+.hero-cta:hover .arrow{transform:translateX(3px)}
+[data-lang="ar"] .hero-cta:hover .arrow{transform:translateX(-3px)}
+
+/* Odometer counter */
+.odometer{display:inline-flex;align-items:baseline;font-variant-numeric:tabular-nums;overflow:hidden;line-height:1}
+.odometer .digit{display:inline-block;position:relative;width:.6em;height:1em;overflow:hidden;vertical-align:baseline}
+.odometer .digit-roll{display:flex;flex-direction:column;transition:transform 900ms var(--ease-out-quart)}
+.odometer .digit-roll span{display:block;height:1em;line-height:1;text-align:center}
+
+/* ============ Horizontal journey timeline ============ */
+#journey-timeline{position:sticky;top:var(--topnav-height);z-index:900;background:rgba(251,251,252,.9);backdrop-filter:saturate(180%) blur(12px);-webkit-backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid var(--color-border);padding:14px var(--sp-6);margin-left:calc(var(--sp-12)*-1);margin-right:calc(var(--sp-12)*-1);margin-bottom:var(--sp-8);display:none}
+[data-theme="dark"] #journey-timeline{background:rgba(9,9,11,.85)}
+#journey-timeline.visible{display:block}
+.timeline-inner{max-width:1240px;margin:0 auto;display:flex;align-items:center;gap:var(--sp-4)}
+.timeline-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:1.6px;color:var(--color-text-muted);white-space:nowrap;flex:0 0 auto}
+.timeline-track{position:relative;flex:1;display:flex;align-items:center;gap:8px;min-width:0;overflow-x:auto;padding:4px 2px;scrollbar-width:none}
+.timeline-track::-webkit-scrollbar{display:none}
+.timeline-step{display:flex;align-items:center;gap:8px;flex:1 0 auto;min-width:0;cursor:pointer;padding:6px 10px;border-radius:999px;transition:background var(--transition);white-space:nowrap;font-size:12px;color:var(--color-text-muted);font-weight:500;border:1px solid transparent}
+.timeline-step:hover{background:var(--color-surface-2);color:var(--color-text)}
+.timeline-step.active{background:var(--color-surface-2);color:var(--color-text);font-weight:600;border-color:var(--color-border-strong)}
+.timeline-step .dot{width:8px;height:8px;border-radius:50%;flex:0 0 auto;box-shadow:0 0 0 3px rgba(0,0,0,.04)}
+.timeline-step .dot.sev-high{background:var(--color-high)}
+.timeline-step .dot.sev-medium{background:var(--color-medium)}
+.timeline-step .dot.sev-low{background:var(--color-low)}
+.timeline-step .num{font-variant-numeric:tabular-nums;opacity:.6;font-size:11px}
+
+/* ============ Filterable findings board ============ */
+.slide-filters{display:flex;align-items:center;gap:var(--sp-3);flex-wrap:wrap;margin-bottom:var(--sp-6)}
+.slide-filter-group{display:inline-flex;gap:4px;padding:3px;background:var(--color-surface);border:1px solid var(--color-border);border-radius:999px}
+.slide-chip{padding:6px 14px;font-size:12px;font-weight:500;color:var(--color-text-muted);border-radius:999px;cursor:pointer;transition:background var(--transition),color var(--transition);white-space:nowrap}
+.slide-chip:hover{color:var(--color-text)}
+.slide-chip.active{background:var(--color-text);color:var(--color-bg);font-weight:600}
+.slide-chip .count{font-variant-numeric:tabular-nums;opacity:.7;margin-left:6px}
+.slide-results-count{font-size:11.5px;color:var(--color-text-muted);margin-left:auto}
+[data-lang="ar"] .slide-results-count{margin-left:0;margin-right:auto}
+.slide.hidden{display:none}
+.slide{transition:opacity var(--transition),transform var(--transition),border-color var(--transition),box-shadow var(--transition)}
+.slide.fading-out{opacity:0;transform:scale(.96)}
+
+/* ============ 3D tilt + cursor glow on cards ============ */
+.card,.theme-card,.slide,.risk-card,.win-card,.summary-theme-row,.summary-a11y-row,.hero-counter-card{position:relative;overflow:hidden;transform-style:preserve-3d}
+.card::after,.theme-card::after,.slide::after,.risk-card::after,.win-card::after{
+  content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity 300ms var(--ease-elegant);
+  background:radial-gradient(600px circle at var(--mx,50%) var(--my,50%),rgba(254,238,0,.08),transparent 40%);
+}
+.card:hover::after,.theme-card:hover::after,.slide:hover::after,.risk-card:hover::after,.win-card:hover::after{opacity:1}
+
+/* ============ Annotation connection line ============ */
+.conn-svg{position:absolute;inset:0;pointer-events:none;z-index:9;overflow:visible}
+.conn-path{fill:none;stroke:var(--color-accent);stroke-width:2;stroke-linecap:round;stroke-dasharray:1000;stroke-dashoffset:1000;filter:drop-shadow(0 0 6px rgba(254,238,0,.5))}
+.conn-path.visible{animation:drawLine 500ms var(--ease-elegant) forwards}
+@keyframes drawLine{to{stroke-dashoffset:0}}
+
+/* ============ Comparative W/M chart ============ */
+.wvm-chart{margin:var(--sp-6) 0;padding:var(--sp-6);background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius);box-shadow:var(--shadow-xs)}
+.wvm-chart h4{font-size:14px;margin-bottom:var(--sp-5);display:flex;align-items:center;gap:var(--sp-3)}
+.wvm-chart .legend{display:inline-flex;gap:16px;font-size:11px;font-weight:400;color:var(--color-text-muted);margin-left:auto}
+[data-lang="ar"] .wvm-chart .legend{margin-left:0;margin-right:auto}
+.wvm-chart .legend span{display:inline-flex;align-items:center;gap:6px}
+.wvm-chart .legend .sw{width:10px;height:10px;border-radius:2px}
+.wvm-rows{display:flex;flex-direction:column;gap:14px}
+.wvm-row{display:grid;grid-template-columns:140px 1fr 1fr;gap:var(--sp-3);align-items:center;font-size:12.5px}
+.wvm-row .label{color:var(--color-text-muted);font-weight:500}
+.wvm-bar{display:flex;align-items:center;gap:8px}
+.wvm-bar .fill{height:14px;background:linear-gradient(90deg,var(--color-text-muted),var(--color-text-2));border-radius:4px;width:0;transition:width 900ms var(--ease-out-quart)}
+.wvm-bar.web .fill{background:linear-gradient(90deg,#93C5FD,#3B82F6)}
+.wvm-bar.mobile .fill{background:linear-gradient(90deg,#FCA5A5,#EF4444)}
+.wvm-bar .n{font-variant-numeric:tabular-nums;color:var(--color-text);font-weight:600;min-width:20px}
+.is-visible .wvm-bar .fill{width:var(--fill)}
+
+/* ============ Help overlay / keyboard shortcuts ============ */
+#help-overlay{position:fixed;inset:0;z-index:8000;background:rgba(11,17,21,.75);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:20px}
+#help-overlay.open{display:flex}
+.help-card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:16px;padding:var(--sp-8);max-width:440px;width:100%;box-shadow:var(--shadow-lg)}
+.help-card h3{font-size:16px;margin-bottom:var(--sp-5);display:flex;align-items:center;gap:8px}
+.help-card h3::before{content:"⌨️";font-size:20px}
+.help-shortcuts{display:grid;grid-template-columns:1fr auto;gap:10px 16px;font-size:13px;color:var(--color-text-2)}
+.help-shortcuts kbd{display:inline-block;padding:3px 8px;background:var(--color-surface-2);border:1px solid var(--color-border);border-radius:6px;font-size:11px;font-family:ui-monospace,monospace;color:var(--color-text);font-weight:600;box-shadow:0 1px 0 var(--color-border)}
+.help-close{margin-top:var(--sp-5);padding:10px 16px;background:var(--color-text);color:var(--color-bg);border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;width:100%}
+
+/* ============ Finale ============ */
+#finale{margin-top:var(--sp-16);padding:var(--sp-12);background:linear-gradient(160deg, var(--color-ink) 0%, var(--color-ink-deep) 100%);border-radius:16px;color:#F5F5F7;text-align:center;position:relative;overflow:hidden;box-shadow:var(--shadow-md)}
+#finale::before{content:"";position:absolute;top:-20%;left:50%;transform:translateX(-50%);width:500px;height:500px;background:radial-gradient(circle,rgba(254,238,0,.08) 0%,transparent 60%);pointer-events:none}
+#finale h2{font-size:clamp(30px,4vw,44px);font-weight:700;letter-spacing:-.025em;margin-bottom:16px;color:#fff;position:relative}
+#finale p{font-size:16px;color:rgba(255,255,255,.7);max-width:620px;margin:0 auto 32px;line-height:1.65;position:relative}
+#finale .finale-cta{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;background:var(--color-accent);color:#0F1115;border-radius:999px;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.3px;cursor:pointer;transition:transform var(--transition),box-shadow var(--transition);box-shadow:0 6px 20px rgba(254,238,0,.3);position:relative}
+#finale .finale-cta:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(254,238,0,.5)}
 
 /* ============ Editorial: Animated bars ============ */
 .a-bar{height:4px;background:rgba(0,0,0,.06);border-radius:999px;overflow:hidden;margin-top:var(--sp-3)}
@@ -483,8 +705,27 @@ td strong{color:var(--color-text);font-weight:600}
 
 <a href="#main-content" class="skip-link">Skip to main content</a>
 
+<!-- ============ Cinematic intro curtain ============ -->
+<div id="intro-curtain" role="presentation" aria-hidden="true">
+  <button class="intro-skip" id="intro-skip" aria-label="Skip intro">Skip ↵</button>
+  <div class="intro-wrap">
+    <div class="intro-eyebrow" data-tr="heroEyebrow">UX Audit · Saudi Arabia · April 2026</div>
+    <h1 class="intro-title">
+      <span class="line"><span class="word" data-delay="300">noon</span>&nbsp;<span class="word" data-delay="400">Saudi</span>&nbsp;<span class="word" data-delay="500">Arabia</span></span>
+      <span class="line"><span class="word accent" data-delay="700">iPhone</span>&nbsp;<span class="word accent" data-delay="800">17</span>&nbsp;<span class="word" data-delay="900">Journey</span></span>
+    </h1>
+    <div class="intro-sub" data-tr="heroSubtitle">Search-to-Checkout Journey · Web + Mobile</div>
+    <div class="intro-heatmap" id="intro-heatmap"></div>
+    <div class="intro-counters" id="intro-counters"></div>
+  </div>
+</div>
+
+<!-- Scroll progress bar -->
+<div id="scroll-progress" role="presentation"></div>
+
 <!-- ============ Top nav ============ -->
 <nav id="topnav">
+  <button class="mobile-menu-btn" id="mobile-menu" aria-label="Toggle navigation"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
   <div class="brand">
     <span class="brand-name" data-tr="appName">AuditFlow</span>
     <span class="brand-badge">Noon SA · iPhone 17</span>
@@ -503,6 +744,7 @@ td strong{color:var(--color-text);font-weight:600}
 </nav>
 
 <!-- ============ Sidebar ============ -->
+<div id="sidebar-backdrop"></div>
 <aside id="sidebar" aria-label="Report navigation">
   <nav aria-label="Sections">
     <div class="sb-group-label" data-tr="overview">Overview</div>
@@ -569,25 +811,55 @@ td strong{color:var(--color-text);font-weight:600}
   <div class="tab-panel active" data-tab="journey">
 
     <section id="journey-hero" class="reveal">
-      <div class="hero-eyebrow"><span data-tr="heroEyebrow">UX Audit · Saudi Arabia · April 2026</span></div>
-      <h1 class="hero-title"><span data-tr="heroTitleL1">noon Saudi Arabia —</span> <span class="accent" data-tr="heroTitleL2">iPhone 17</span></h1>
-      <div class="hero-subtitle" data-tr="heroSubtitle">Search-to-Checkout Journey · Web + Mobile</div>
-      <p class="hero-lead" id="hero-lead"></p>
-      <div class="hero-counters">
-        <div class="hero-counter-card"><span class="hero-counter-num accent counter" data-count-target="0" id="hero-c-findings">0</span><span class="hero-counter-label" data-tr="coverStepsUnit">Findings</span></div>
-        <div class="hero-counter-card"><span class="hero-counter-num counter" data-count-target="0" id="hero-c-high">0</span><span class="hero-counter-label" data-tr="kpiHigh">High severity</span></div>
-        <div class="hero-counter-card"><span class="hero-counter-num counter" data-count-target="0" id="hero-c-steps">0</span><span class="hero-counter-label" data-tr="stepsAudited">Steps audited</span></div>
-        <div class="hero-counter-card"><span class="hero-counter-num" id="hero-c-captured">—</span><span class="hero-counter-label" data-tr="kpiCaptured">Screens captured</span></div>
+      <div class="parallax-light" id="hero-parallax"></div>
+      <div class="hero-main">
+        <div class="hero-left">
+          <div class="hero-eyebrow"><span data-tr="heroEyebrow">UX Audit · Saudi Arabia · April 2026</span></div>
+          <h1 class="hero-title"><span data-tr="heroTitleL1">noon Saudi Arabia —</span> <span class="accent" data-tr="heroTitleL2">iPhone 17</span></h1>
+          <div class="hero-subtitle" data-tr="heroSubtitle">Search-to-Checkout Journey · Web + Mobile</div>
+          <p class="hero-lead" id="hero-lead"></p>
+          <div class="hero-counters">
+            <div class="hero-counter-card"><span class="hero-counter-num accent counter" data-count-target="0" id="hero-c-findings">0</span><span class="hero-counter-label" data-tr="coverStepsUnit">Findings</span></div>
+            <div class="hero-counter-card"><span class="hero-counter-num counter" data-count-target="0" id="hero-c-high">0</span><span class="hero-counter-label" data-tr="kpiHigh">High severity</span></div>
+            <div class="hero-counter-card"><span class="hero-counter-num counter" data-count-target="0" id="hero-c-steps">0</span><span class="hero-counter-label" data-tr="stepsAudited">Steps audited</span></div>
+            <div class="hero-counter-card"><span class="hero-counter-num" id="hero-c-captured">—</span><span class="hero-counter-label" data-tr="kpiCaptured">Screens captured</span></div>
+          </div>
+          <button class="hero-cta magnetic" id="hero-cta"><span data-tr="beginReport">Begin Report</span> <span class="arrow">→</span></button>
+        </div>
+        <div class="hero-viz">
+          <div class="hero-donut">
+            <svg viewBox="0 0 200 200" aria-hidden="true">
+              <circle class="arc bg" cx="100" cy="100" r="80"></circle>
+              <circle class="arc" id="donut-high" cx="100" cy="100" r="80" stroke="url(#g-high)" stroke-dasharray="502" stroke-dashoffset="502"></circle>
+              <circle class="arc" id="donut-med" cx="100" cy="100" r="80" stroke="url(#g-med)" stroke-dasharray="502" stroke-dashoffset="502"></circle>
+              <circle class="arc" id="donut-low" cx="100" cy="100" r="80" stroke="url(#g-low)" stroke-dasharray="502" stroke-dashoffset="502"></circle>
+              <defs>
+                <linearGradient id="g-high" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#EF4444"/><stop offset="1" stop-color="#B91C1C"/></linearGradient>
+                <linearGradient id="g-med" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F59E0B"/><stop offset="1" stop-color="#B45309"/></linearGradient>
+                <linearGradient id="g-low" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#22C55E"/><stop offset="1" stop-color="#15803D"/></linearGradient>
+              </defs>
+            </svg>
+            <div class="hero-donut-center"><span class="num" id="donut-total">0</span><span class="lbl" data-tr="coverStepsUnit">Findings</span></div>
+          </div>
+          <div class="hero-donut-legend" id="donut-legend"></div>
+        </div>
       </div>
-      <div class="hero-heatmap-label" data-tr="coverHeatmap">9-Step Journey · Severity Heatmap</div>
+      <div class="hero-heatmap-label" style="margin-top:var(--sp-6)" data-tr="coverHeatmap">9-Step Journey · Severity Heatmap</div>
       <div class="hero-heatmap" id="hero-heatmap"></div>
       <div class="hero-heatmap-legend">
         <span><span class="dot" style="background:#EF4444"></span><span data-tr="sev_high">High</span> <strong id="hero-legend-high">0</strong></span>
         <span><span class="dot" style="background:#F59E0B"></span><span data-tr="sev_medium">Medium</span> <strong id="hero-legend-med">0</strong></span>
         <span><span class="dot" style="background:#22C55E"></span><span data-tr="sev_low">Low</span> <strong id="hero-legend-low">0</strong></span>
       </div>
-      <div class="hero-scroll-hint"><span data-tr="heroScroll">Scroll to explore</span> <span class="arrow">↓</span></div>
+      <div class="hero-scroll-hint" style="margin-top:var(--sp-5)"><span data-tr="heroScroll">Scroll to explore</span> <span class="arrow">↓</span></div>
     </section>
+
+    <nav id="journey-timeline" aria-label="Journey timeline">
+      <div class="timeline-inner">
+        <span class="timeline-label" data-tr="journeySteps">Journey</span>
+        <div class="timeline-track" id="timeline-track"></div>
+      </div>
+    </nav>
 
     <section id="executive-summary" class="section">
       <h2 class="section-title" data-tr="executiveSummary">Executive Summary</h2>
@@ -616,12 +888,37 @@ td strong{color:var(--color-text);font-weight:600}
 
     <section id="audit-slides" class="section">
       <h2 class="section-title" data-tr="auditSlides">Audit in Slides</h2>
+      <div class="slide-filters" id="slide-filters">
+        <div class="slide-filter-group" data-filter="severity">
+          <button class="slide-chip active" data-value="all" data-tr="filterAll">All</button>
+          <button class="slide-chip" data-value="High" data-tr="sev_high">High</button>
+          <button class="slide-chip" data-value="Medium" data-tr="sev_medium">Medium</button>
+          <button class="slide-chip" data-value="Low" data-tr="sev_low">Low</button>
+        </div>
+        <div class="slide-filter-group" data-filter="platform">
+          <button class="slide-chip active" data-value="all" data-tr="filterBoth">Web + Mobile</button>
+          <button class="slide-chip" data-value="web" data-tr="web">Web</button>
+          <button class="slide-chip" data-value="mobile" data-tr="mobile">Mobile</button>
+        </div>
+        <div class="slide-filter-group" data-filter="type">
+          <button class="slide-chip active" data-value="all" data-tr="filterAll">All</button>
+          <button class="slide-chip" data-value="ux" data-tr="uxIssue">UX</button>
+          <button class="slide-chip" data-value="a11y" data-tr="keyA11y">A11y</button>
+        </div>
+        <span class="slide-results-count" id="slide-count"></span>
+      </div>
       <div class="slides-scroller" id="slides-scroller"></div>
     </section>
 
     <section id="journey-steps">
       <h2 class="section-title" data-tr="journeySteps">Journey Steps</h2>
       <div id="steps-container"></div>
+    </section>
+
+    <section id="finale" class="reveal">
+      <h2 data-tr="finaleTitle">Ship it with confidence</h2>
+      <p id="finale-lead"></p>
+      <button class="finale-cta" id="finale-cta"><span data-tr="finaleCta">View the Summary</span> →</button>
     </section>
 
   </div>
@@ -631,6 +928,12 @@ td strong{color:var(--color-text);font-weight:600}
     <section class="section">
       <h2 class="section-title" data-tr="insights">Insights</h2>
       <div class="themes-grid" id="themes-grid"></div>
+      <div class="wvm-chart reveal" id="wvm-chart">
+        <h4><span data-tr="wvmChartTitle">Issue density by step · Web vs Mobile</span>
+          <span class="legend"><span><span class="sw" style="background:#3B82F6"></span><span data-tr="web">Web</span></span><span><span class="sw" style="background:#EF4444"></span><span data-tr="mobile">Mobile</span></span></span>
+        </h4>
+        <div class="wvm-rows" id="wvm-rows"></div>
+      </div>
       <h3 data-tr="webVsMobileTitle" style="font-size:18px;margin-top:20px;margin-bottom:10px">Web vs Mobile Comparison</h3>
       <div class="table-wrap">
         <table id="wvm-table">
@@ -700,6 +1003,25 @@ td strong{color:var(--color-text);font-weight:600}
   </div>
 
 </main>
+
+<!-- Help overlay -->
+<div id="help-overlay" role="dialog" aria-modal="true" aria-label="Keyboard shortcuts">
+  <div class="help-card">
+    <h3 data-tr="helpTitle">Keyboard shortcuts</h3>
+    <div class="help-shortcuts">
+      <span data-tr="helpJourney">Journey tab</span><span><kbd>J</kbd></span>
+      <span data-tr="helpInsights">Insights tab</span><span><kbd>I</kbd></span>
+      <span data-tr="helpA11y">Accessibility tab</span><span><kbd>A</kbd></span>
+      <span data-tr="helpSummary">Summary tab</span><span><kbd>S</kbd></span>
+      <span data-tr="helpDark">Toggle dark mode</span><span><kbd>D</kbd></span>
+      <span data-tr="helpLang">Toggle language</span><span><kbd>L</kbd></span>
+      <span data-tr="helpTop">Back to top</span><span><kbd>T</kbd></span>
+      <span data-tr="helpHelp">Show this help</span><span><kbd>?</kbd></span>
+      <span data-tr="helpClose">Close overlays</span><span><kbd>Esc</kbd></span>
+    </div>
+    <button class="help-close" id="help-close" data-tr="helpGotIt">Got it</button>
+  </div>
+</div>
 
 <!-- Screenshot modal -->
 <div id="modal" role="dialog" aria-modal="true" aria-label="Screenshot viewer">
@@ -784,7 +1106,7 @@ td strong{color:var(--color-text);font-weight:600}
           const badge = type==='ux' ? t('uxIssue') : t('accessibilityIssue');
           const ref = type==='ux' ? d.heuristic : d.wcagCriteria;
           scroller.insertAdjacentHTML('beforeend',
-            '<div class="slide reveal">'+
+            '<div class="slide reveal" data-severity="'+d.severity+'" data-platform="'+plat+'" data-type="'+type+'">'+
               '<div class="slide-index">'+idxStr+'</div>'+
               '<div class="slide-head">'+
                 '<span class="slide-chip">'+step.id+'. '+escapeHtml(lang==='ar'?step.nameAr:step.name)+'</span>'+
@@ -1065,6 +1387,8 @@ td strong{color:var(--color-text);font-weight:600}
     // Pull-quote
     const pq = document.getElementById('pull-quote-text');
     if (pq) pq.textContent = lang==='ar' ? (D.executiveSummary.leadQuoteAr||D.executiveSummary.leadQuote) : D.executiveSummary.leadQuote;
+    // Donut chart
+    buildDonut(high, med, low);
   }
 
   // --- Sidebar floating indicator pill ---
@@ -1314,6 +1638,356 @@ td strong{color:var(--color-text);font-weight:600}
   function escapeAttr(s){ return escapeHtml(s); }
   function cssEsc(s){ return (window.CSS && CSS.escape) ? CSS.escape(s) : String(s).replace(/"/g,'\\"'); }
 
+  // --- Donut chart ---
+  function buildDonut(high, med, low){
+    const total = high+med+low;
+    if (total === 0) return;
+    const C = 2*Math.PI*80; // circumference
+    const hPct = high/total, mPct = med/total, lPct = low/total;
+    const arcs = [
+      {id:'donut-high', len:C*hPct, off:0},
+      {id:'donut-med', len:C*mPct, off:-C*hPct},
+      {id:'donut-low', len:C*lPct, off:-C*(hPct+mPct)}
+    ];
+    const total_el = document.getElementById('donut-total');
+    if (total_el) total_el.textContent = total;
+    setTimeout(()=>{
+      arcs.forEach(a=>{
+        const el = document.getElementById(a.id); if (!el) return;
+        el.setAttribute('stroke-dasharray', a.len+' '+(C-a.len));
+        el.setAttribute('stroke-dashoffset', a.off);
+      });
+    }, 400);
+    // Legend
+    const leg = document.getElementById('donut-legend');
+    if (leg){
+      leg.innerHTML =
+        '<div class="row"><span class="sw" style="background:linear-gradient(90deg,#EF4444,#B91C1C)"></span><span data-tr="sev_high">'+t('sev_high')+'</span><span class="n">'+high+'</span></div>'+
+        '<div class="row"><span class="sw" style="background:linear-gradient(90deg,#F59E0B,#B45309)"></span><span data-tr="sev_medium">'+t('sev_medium')+'</span><span class="n">'+med+'</span></div>'+
+        '<div class="row"><span class="sw" style="background:linear-gradient(90deg,#22C55E,#15803D)"></span><span data-tr="sev_low">'+t('sev_low')+'</span><span class="n">'+low+'</span></div>';
+    }
+  }
+
+  // --- Intro curtain ---
+  function playIntro(){
+    const curtain = document.getElementById('intro-curtain');
+    if (!curtain) return;
+    // Compute counts for intro
+    let high=0, med=0, low=0;
+    D.steps.forEach(s=>{
+      ['web','mobile'].forEach(p=>{
+        [...s[p].uxIssues, ...s[p].accessibilityIssues].forEach(i=>{
+          if(i.severity==='High') high++;
+          else if(i.severity==='Medium') med++;
+          else low++;
+        });
+      });
+    });
+    // Build intro heatmap
+    const heat = document.getElementById('intro-heatmap');
+    heat.innerHTML = '';
+    D.steps.forEach(s=>{
+      let h=0,m=0,l=0;
+      ['web','mobile'].forEach(p=>[...s[p].uxIssues,...s[p].accessibilityIssues].forEach(i=>{
+        if(i.severity==='High') h++; else if(i.severity==='Medium') m++; else l++;
+      }));
+      const worst = h>0?'high':(m>0?'medium':'low');
+      heat.insertAdjacentHTML('beforeend','<div class="seg" data-sev="'+worst+'"></div>');
+    });
+    // Build intro counters
+    const cW = document.getElementById('intro-counters');
+    cW.innerHTML = '';
+    const total = high+med+low;
+    [[total,t('coverStepsUnit'),true],[high,t('kpiHigh'),false],[D.meta.totalSteps,t('stepsAudited'),false],['17/18',t('kpiCaptured'),false]].forEach((c,i)=>{
+      cW.insertAdjacentHTML('beforeend','<div class="intro-counter" data-idx="'+i+'"><span class="n'+(c[2]?' accent':'')+'" data-count-target="'+c[0]+'">'+c[0]+'</span><span class="l">'+escapeHtml(c[1])+'</span></div>');
+    });
+    // Stagger reveal
+    curtain.classList.add('playing');
+    // Animate title words
+    curtain.querySelectorAll('.word').forEach(w=>{
+      setTimeout(()=>{ w.style.opacity=1; w.style.transform='translateY(0)'; }, Number(w.dataset.delay)||0);
+    });
+    // Heatmap fall
+    setTimeout(()=>{
+      curtain.querySelectorAll('.intro-heatmap .seg').forEach((s,i)=>{
+        setTimeout(()=>s.classList.add('fallen'), i*60);
+      });
+    }, 900);
+    // Counters
+    setTimeout(()=>{
+      curtain.querySelectorAll('.intro-counter').forEach((cc,i)=>{
+        setTimeout(()=>{
+          cc.style.opacity=1; cc.style.transform='translateY(0)';
+          const n = cc.querySelector('.n');
+          const tgt = n.dataset.countTarget;
+          if (String(tgt).indexOf('/')===-1) animateCounter(n, tgt);
+        }, i*140);
+      });
+    }, 1500);
+    // Auto-dismiss after full sequence
+    const total_ms = 3400;
+    const dismiss = ()=> closeIntro();
+    const timer = setTimeout(dismiss, total_ms);
+    document.getElementById('intro-skip').addEventListener('click', ()=>{clearTimeout(timer); dismiss();}, {once:true});
+    // Also dismiss on any click
+    curtain.addEventListener('click', (e)=>{ if(e.target.id==='intro-skip') return; clearTimeout(timer); dismiss(); }, {once:true});
+    // Escape to skip
+    const onKey = (e)=>{ if(e.key==='Escape'){clearTimeout(timer); dismiss(); document.removeEventListener('keydown',onKey);} };
+    document.addEventListener('keydown', onKey);
+  }
+  function closeIntro(){
+    const curtain = document.getElementById('intro-curtain');
+    if (!curtain) return;
+    curtain.classList.add('gone');
+    setTimeout(()=>{ curtain.remove(); sweepReveal(); }, 900);
+  }
+
+  // --- Journey timeline ---
+  function buildTimeline(){
+    const track = document.getElementById('timeline-track');
+    const bar = document.getElementById('journey-timeline');
+    if (!track || !bar) return;
+    track.innerHTML = '';
+    D.steps.forEach(s=>{
+      let h=0,m=0,l=0;
+      ['web','mobile'].forEach(p=>[...s[p].uxIssues,...s[p].accessibilityIssues].forEach(i=>{
+        if(i.severity==='High') h++; else if(i.severity==='Medium') m++; else l++;
+      }));
+      const worst = h>0?'high':(m>0?'medium':'low');
+      track.insertAdjacentHTML('beforeend',
+        '<a class="timeline-step" data-step="'+s.id+'" href="#step-'+s.id+'">'+
+          '<span class="dot sev-'+worst+'"></span>'+
+          '<span class="num">'+String(s.id).padStart(2,'0')+'</span>'+
+          '<span class="nm">'+escapeHtml(lang==='ar'?s.nameAr:s.name)+'</span>'+
+        '</a>');
+    });
+    track.querySelectorAll('.timeline-step').forEach(btn=>{
+      btn.addEventListener('click', (e)=>{
+        e.preventDefault();
+        const id = btn.dataset.step;
+        const target = document.getElementById('step-'+id);
+        if (target) target.scrollIntoView({behavior:'smooth', block:'start'});
+      });
+    });
+    // Show/hide based on tab + scroll past hero
+    function update(){
+      const isJourney = document.querySelector('.tab-btn.active')?.dataset.tab === 'journey';
+      const hero = document.getElementById('journey-hero');
+      const heroBottom = hero ? hero.getBoundingClientRect().bottom : 0;
+      bar.classList.toggle('visible', isJourney && heroBottom < 100);
+      // Highlight current
+      let active = null;
+      D.steps.forEach(s=>{
+        const el = document.getElementById('step-'+s.id);
+        if (el){
+          const r = el.getBoundingClientRect();
+          if (r.top <= 120 && r.bottom > 120) active = s.id;
+        }
+      });
+      track.querySelectorAll('.timeline-step').forEach(b=>b.classList.toggle('active', Number(b.dataset.step)===active));
+    }
+    window.addEventListener('scroll', update, {passive:true});
+    // Polling fallback for environments where scroll events are throttled
+    setInterval(update, 400);
+    update();
+  }
+
+  // --- Scroll progress bar ---
+  function initScrollProgress(){
+    const bar = document.getElementById('scroll-progress');
+    if (!bar) return;
+    const update = ()=>{
+      const h = document.documentElement;
+      const max = h.scrollHeight - h.clientHeight;
+      const pct = max > 0 ? (window.scrollY / max) * 100 : 0;
+      bar.style.width = pct + '%';
+    };
+    window.addEventListener('scroll', update, {passive:true});
+    setInterval(update, 300);
+    update();
+  }
+
+  // --- Cursor parallax on hero ---
+  function initHeroParallax(){
+    const hero = document.getElementById('journey-hero');
+    const light = document.getElementById('hero-parallax');
+    if (!hero || !light || REDUCE_MOTION) return;
+    hero.addEventListener('mousemove', (e)=>{
+      const r = hero.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - 0.5;
+      const y = (e.clientY - r.top) / r.height - 0.5;
+      light.style.transform = 'translate('+(x*40)+'px,'+(y*40)+'px)';
+    });
+    hero.addEventListener('mouseleave', ()=>{ light.style.transform=''; });
+  }
+
+  // --- Magnetic buttons ---
+  function initMagnetic(){
+    if (REDUCE_MOTION) return;
+    document.querySelectorAll('.magnetic').forEach(btn=>{
+      btn.addEventListener('mousemove', (e)=>{
+        const r = btn.getBoundingClientRect();
+        const x = e.clientX - r.left - r.width/2;
+        const y = e.clientY - r.top - r.height/2;
+        btn.style.transform = 'translate('+(x*0.18)+'px,'+(y*0.18)+'px)';
+      });
+      btn.addEventListener('mouseleave', ()=>{ btn.style.transform=''; });
+    });
+  }
+
+  // --- Cursor-reactive card glow ---
+  function initCardGlow(){
+    if (REDUCE_MOTION) return;
+    const sel = '.card, .theme-card, .slide, .risk-card, .win-card, .summary-theme-row, .summary-a11y-row, .hero-counter-card';
+    document.body.addEventListener('mousemove', (e)=>{
+      const t = e.target.closest(sel);
+      if (!t) return;
+      const r = t.getBoundingClientRect();
+      t.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      t.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    }, {passive:true});
+  }
+
+  // --- Slide filters ---
+  function initSlideFilters(){
+    const filters = document.getElementById('slide-filters');
+    const scroller = document.getElementById('slides-scroller');
+    const count = document.getElementById('slide-count');
+    if (!filters) return;
+    const state = {severity:'all', platform:'all', type:'all'};
+    filters.querySelectorAll('.slide-filter-group').forEach(group=>{
+      const key = group.dataset.filter;
+      group.querySelectorAll('.slide-chip').forEach(ch=>{
+        ch.addEventListener('click', ()=>{
+          group.querySelectorAll('.slide-chip').forEach(x=>x.classList.remove('active'));
+          ch.classList.add('active');
+          state[key] = ch.dataset.value;
+          apply();
+        });
+      });
+    });
+    function apply(){
+      const slides = scroller.querySelectorAll('.slide');
+      let visible = 0;
+      slides.forEach(s=>{
+        const sev = s.dataset.severity;
+        const pl = s.dataset.platform;
+        const ty = s.dataset.type;
+        const ok = (state.severity==='all'||sev===state.severity) &&
+                   (state.platform==='all'||pl===state.platform) &&
+                   (state.type==='all'||ty===state.type);
+        s.classList.toggle('hidden', !ok);
+        if (ok) visible++;
+      });
+      if (count) count.textContent = visible + ' / ' + slides.length;
+    }
+    apply();
+  }
+
+  // --- Comparative W/M chart ---
+  function buildWvmChart(){
+    const rows = document.getElementById('wvm-rows');
+    if (!rows) return;
+    rows.innerHTML = '';
+    // Find max for scale
+    let maxN = 0;
+    D.steps.forEach(s=>{
+      maxN = Math.max(maxN, s.web.uxIssues.length + s.web.accessibilityIssues.length, s.mobile.uxIssues.length + s.mobile.accessibilityIssues.length);
+    });
+    maxN = Math.max(maxN, 1);
+    D.steps.forEach(s=>{
+      const webN = s.web.uxIssues.length + s.web.accessibilityIssues.length;
+      const mobN = s.mobile.uxIssues.length + s.mobile.accessibilityIssues.length;
+      const name = lang==='ar' ? s.nameAr : s.name;
+      rows.insertAdjacentHTML('beforeend',
+        '<div class="wvm-row">'+
+          '<span class="label">'+escapeHtml(s.id+'. '+name)+'</span>'+
+          '<div class="wvm-bar web"><div class="fill" style="--fill:'+(webN/maxN*100)+'%"></div><span class="n">'+webN+'</span></div>'+
+          '<div class="wvm-bar mobile"><div class="fill" style="--fill:'+(mobN/maxN*100)+'%"></div><span class="n">'+mobN+'</span></div>'+
+        '</div>');
+    });
+  }
+
+  // --- Annotation connection lines ---
+  function initAnnotationLines(){
+    // Draw SVG line from dot to its related card on hover
+    document.querySelectorAll('.step-section').forEach(sec=>{
+      let svg = sec.querySelector('.conn-svg');
+      if (!svg){
+        svg = document.createElementNS('http://www.w3.org/2000/svg','svg');
+        svg.setAttribute('class','conn-svg');
+        sec.style.position='relative';
+        sec.appendChild(svg);
+      }
+      sec.querySelectorAll('.annotation-dot').forEach(dot=>{
+        dot.addEventListener('mouseenter', ()=>{
+          const id = dot.dataset.annotationId;
+          const card = sec.querySelector('[data-related-annotation="'+cssEsc(id)+'"]');
+          if (!card) return;
+          const dr = dot.getBoundingClientRect();
+          const cr = card.getBoundingClientRect();
+          const sr = sec.getBoundingClientRect();
+          const x1 = dr.left + dr.width/2 - sr.left;
+          const y1 = dr.top + dr.height/2 - sr.top;
+          const x2 = cr.left - sr.left;
+          const y2 = cr.top + cr.height/2 - sr.top;
+          svg.setAttribute('width', sr.width);
+          svg.setAttribute('height', sr.height);
+          svg.innerHTML = '<path class="conn-path visible" d="M '+x1+' '+y1+' C '+(x1+80)+' '+y1+', '+(x2-80)+' '+y2+', '+x2+' '+y2+'"/>';
+        });
+        dot.addEventListener('mouseleave', ()=>{ svg.innerHTML=''; });
+      });
+    });
+  }
+
+  // --- Keyboard shortcuts & help overlay ---
+  function initKeyboard(){
+    const help = document.getElementById('help-overlay');
+    document.getElementById('help-close')?.addEventListener('click', ()=>help.classList.remove('open'));
+    help.addEventListener('click', (e)=>{ if(e.target===help) help.classList.remove('open'); });
+    document.addEventListener('keydown', (e)=>{
+      if (e.target.matches('input, textarea, select')) return;
+      const k = e.key.toLowerCase();
+      if (k==='?') { e.preventDefault(); help.classList.toggle('open'); }
+      else if (k==='escape') { help.classList.remove('open'); document.getElementById('modal')?.classList.remove('open'); }
+      else if (k==='j') document.querySelector('.tab-btn[data-tab="journey"]')?.click();
+      else if (k==='i') document.querySelector('.tab-btn[data-tab="insights"]')?.click();
+      else if (k==='a') document.querySelector('.tab-btn[data-tab="accessibility"]')?.click();
+      else if (k==='s') document.querySelector('.tab-btn[data-tab="summary"]')?.click();
+      else if (k==='d') document.getElementById('toggle-theme')?.click();
+      else if (k==='l') document.getElementById('toggle-lang')?.click();
+      else if (k==='t') window.scrollTo({top:0,behavior:'smooth'});
+    });
+  }
+
+  // --- Finale ---
+  function buildFinale(){
+    const lead = document.getElementById('finale-lead');
+    if (lead) lead.textContent = lang==='ar'
+      ? '55 نتيجة. 9 خطوات. مسار واحد واضح لرفع معدل التحويل — يبدأ من إظهار الدفع كضيف في الخطوة 8. الملخص جاهز، والعمل محدد، ومجلسك لديه ما يحتاجه.'
+      : '55 findings. 9 steps. One clear path to material conversion lift — starting with a visible guest-checkout at step 8. The brief is ready. The work is scoped. Your board has what it needs.';
+    document.getElementById('finale-cta')?.addEventListener('click', ()=>{
+      document.querySelector('.tab-btn[data-tab="summary"]').click();
+      window.scrollTo({top:0, behavior:'smooth'});
+    });
+    document.getElementById('hero-cta')?.addEventListener('click', ()=>{
+      document.getElementById('executive-summary')?.scrollIntoView({behavior:'smooth', block:'start'});
+    });
+  }
+
+  // --- Mobile menu ---
+  function initMobileMenu(){
+    const btn = document.getElementById('mobile-menu');
+    const sb = document.getElementById('sidebar');
+    const bd = document.getElementById('sidebar-backdrop');
+    if (!btn || !sb || !bd) return;
+    function close(){ sb.classList.remove('open'); bd.classList.remove('open'); btn.classList.remove('open'); }
+    function toggle(){ const on = !sb.classList.contains('open'); sb.classList.toggle('open', on); bd.classList.toggle('open', on); btn.classList.toggle('open', on); }
+    btn.addEventListener('click', toggle);
+    bd.addEventListener('click', close);
+    sb.addEventListener('click', (e)=>{ if(e.target.closest('.sb-item')) close(); });
+  }
+
   function renderAll(){
     applyTranslations();
     buildSidebarSteps();
@@ -1335,6 +2009,24 @@ td strong{color:var(--color-text);font-weight:600}
   wireTabs();
   wireControls();
   wireModal();
+  buildTimeline();
+  buildWvmChart();
+  buildFinale();
+  initScrollProgress();
+  initHeroParallax();
+  initMagnetic();
+  initCardGlow();
+  initSlideFilters();
+  initAnnotationLines();
+  initKeyboard();
+  initMobileMenu();
+  // Cinematic intro (once per session)
+  if (!sessionStorage.getItem('auditflow-intro-seen') && !REDUCE_MOTION){
+    playIntro();
+    sessionStorage.setItem('auditflow-intro-seen','1');
+  } else {
+    document.getElementById('intro-curtain')?.remove();
+  }
 })();
 </script>
 </body>
