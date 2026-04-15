@@ -102,7 +102,12 @@ const AUDIT_DATA = {
       helpTitle: "Keyboard shortcuts",
       helpJourney: "Journey tab", helpInsights: "Insights tab", helpA11y: "Accessibility tab", helpSummary: "Summary tab",
       helpDark: "Toggle dark mode", helpLang: "Toggle language", helpTop: "Back to top",
-      helpHelp: "Show this help", helpClose: "Close overlays", helpGotIt: "Got it"
+      helpHelp: "Show this help", helpClose: "Close overlays", helpGotIt: "Got it",
+      helpCopy: "Copy link", helpFilter: "Filter mode", helpPrint: "Print / PDF",
+      shareCopyLink: "Copy link", shareExportPdf: "Export PDF",
+      shareBackToTop: "Back to top", shareShortcuts: "Shortcuts",
+      shareLinkCopied: "Link copied to clipboard",
+      filterMode: "Filter mode", filterExit: "Exit (F or Esc)", severity: "Severity"
     },
     ar: {
       appName: "تدفق التدقيق",
@@ -155,7 +160,12 @@ const AUDIT_DATA = {
       helpTitle: "اختصارات لوحة المفاتيح",
       helpJourney: "تبويب الرحلة", helpInsights: "تبويب الرؤى", helpA11y: "تبويب إمكانية الوصول", helpSummary: "تبويب الملخص",
       helpDark: "التبديل إلى الوضع الداكن", helpLang: "تبديل اللغة", helpTop: "إلى الأعلى",
-      helpHelp: "عرض المساعدة", helpClose: "إغلاق النوافذ", helpGotIt: "فهمت"
+      helpHelp: "عرض المساعدة", helpClose: "إغلاق النوافذ", helpGotIt: "فهمت",
+      helpCopy: "نسخ الرابط", helpFilter: "وضع التصفية", helpPrint: "طباعة / PDF",
+      shareCopyLink: "نسخ الرابط", shareExportPdf: "تصدير PDF",
+      shareBackToTop: "العودة إلى الأعلى", shareShortcuts: "الاختصارات",
+      shareLinkCopied: "تم نسخ الرابط",
+      filterMode: "وضع التصفية", filterExit: "إغلاق (F أو Esc)", severity: "الخطورة"
     }
   }
 };
