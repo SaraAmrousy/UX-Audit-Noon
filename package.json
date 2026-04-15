@@ -4,11 +4,16 @@
   "description": "Noon Saudi Arabia UX audit",
   "private": true,
   "scripts": {
-    "capture": "node capture.js"
+    "capture": "node capture.js",
+    "deploy": "wrangler deploy",
+    "preview": "wrangler dev"
   },
   "dependencies": {
     "playwright": "^1.59.1",
     "playwright-extra": "^4.3.6",
     "puppeteer-extra-plugin-stealth": "^2.11.2"
+  },
+  "devDependencies": {
+    "wrangler": "^4.83.0"
   }
 }
